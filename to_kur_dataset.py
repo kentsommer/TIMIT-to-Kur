@@ -6,19 +6,19 @@ from glob import glob
 import soundfile as sf
 
 PATH = os.getcwd() + '/TRAIN'
-AUDIO_PATH = "kur_train/audio/"
-TEXT_PATH = "kur_train/text/"
-KUR_PATH = "kur_train/"
+AUDIO_PATH = "timit_train/audio/"
+TEXT_PATH = "timit_train/text/"
+KUR_PATH = "timit_train/"
 
 try:
-	os.mkdir("kur_train")
-	os.mkdir("kur_train/audio")
-	os.mkdir("kur_train/text")
+	os.mkdir("timit_train")
+	os.mkdir("timit_train/audio")
+	os.mkdir("timit_train/text")
 except:
-	shutil.rmtree("kur_train", ignore_errors=True)
-	os.mkdir("kur_train")
-	os.mkdir("kur_train/audio")
-	os.mkdir("kur_train/text")
+	shutil.rmtree("timit_train", ignore_errors=True)
+	os.mkdir("timit_train")
+	os.mkdir("timit_train/audio")
+	os.mkdir("timit_train/text")
 
 def get_duration(wav_file):
 	f = sf.SoundFile(wav_file)
@@ -52,11 +52,11 @@ for x in os.walk(PATH):
 		files[base] = [text, duration, GUID, txt_file, wav_file]
 
 
-fjson = open(KUR_PATH + "TIMIT-TRAIN.jsonl", "wb")
+fjson = open(KUR_PATH + "timit_train.jsonl", "wb")
 for key, value in files.iteritems():
 	text, duration, GUID, txt_src, wav_src = value
-	txt_dst = TEXT_PATH + str(GUID) + ".TXT"
-	wav_dst = AUDIO_PATH + str(GUID) + ".WAV"
+	txt_dst = TEXT_PATH + str(GUID) + ".txt"
+	wav_dst = AUDIO_PATH + str(GUID) + ".wav"
 
 	#Copy the Files
 	shutil.copyfile(txt_src, txt_dst)
