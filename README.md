@@ -1,4 +1,4 @@
-# Handy Conversion Script to get TIMIT in the form that [kur](https://github.com/deepgram/kur) exepects!
+# Handy Conversion Script to get TIMIT in the form that [kur](https://github.com/deepgram/kur) expects!
 
 Instructions:
 * Place the conversion script in the /path-to-unzipped-dataset/timit/TIMIT folder just outside of TRAIN and TEST folders
