@@ -44,19 +44,23 @@ def update_dirs():
 def get_duration(wav_file):
 	f = sf.SoundFile(wav_file)
 	seconds = (len(f) * 1.0) / f.samplerate
-	print('seconds = {}'.format(seconds))
 	f.close()
 	return seconds
 
 def get_text(txt_file):
 	ftxt = open(txt_file, "rb")
 	line = ftxt.readline().strip("\n")
-	line = line.replace(".", "")
-	line = line.replace(",", "")
-	line = line.replace("?", "")
-	line = line.replace(":", "")
-	result = " ".join(line.split(" ")[2:])
-	print(result)
+	line = line.replace('.', "")
+	line = line.replace(',', "")
+	line = line.replace('?', "")
+	line = line.replace('!', "")
+	line = line.replace(';', "")
+	line = line.replace(':', "")
+	line = line.replace('-', "")
+	line = line.replace('/', "")
+	line = line.replace('\\', "")
+	line = line.replace('"', "")
+	result = " ".join(line.split(" ")[2:]).lower()
 	ftxt.close()
 	return result
 
@@ -136,4 +140,3 @@ if __name__ == '__main__':
 	convert_train()
 	convert_test()
 	print("Converted to kur's expected speech format")
-
